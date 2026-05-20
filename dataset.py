@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from config import Config
-from logger import TaskLogger
+from logger import TaskLogger, log
 
 class QCDataset(object):
 
@@ -10,9 +10,9 @@ class QCDataset(object):
         self.log = logger
         self.base_path = ctx.config.path
         self.files = {
-            "fields_df": ctx.config.qc_files[0],
-            "product_df": ctx.config.qc_files[1],
-            "card_df": ctx.config.qc_files[2]
+            "fields": ctx.config.qc_files[0],
+            "product": ctx.config.qc_files[1],
+            "sample": ctx.config.qc_files[2]
         }
 
     def load(self):

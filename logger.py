@@ -19,8 +19,6 @@ class TaskLogger(object):
             self.logger.addHandler(sh)
 
     def _to_str(self, msg):
-        if isinstance(msg, unicode):
-            return msg.encode('utf-8')
         return str(msg)
 
     def major_step(self, step_num, title):

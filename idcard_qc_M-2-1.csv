@@ -1,0 +1,5 @@
+﻿backtrack_dt,sample_count,total_unique_cards,avg_card_count,avg_eff_card_count,max_card_count,min_card_count,bucket_0_cnt,bucket_1_3_cnt,bucket_4_10_cnt,bucket_10_plus_cnt,p10_card,p25_card,p50_card,p75_card,p90_Card
+2024-07-31,10000,35000,3.5,2.8,25,0,500,4500,4200,800,1,2,3,6,11
+2024-08-31,12000,43000,3.58,2.9,32,0,600,5200,5100,1100,1,2,4,6,12
+2024-09-30,15000,54000,3.6,3.0,28,0,700,6300,6600,1400,1,2,4,7,12
+000001,37000,132000,3.6,3.0,28,0,700,6300,6600,1400,1,2,4,7,12
