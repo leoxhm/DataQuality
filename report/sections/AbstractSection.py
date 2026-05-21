@@ -98,11 +98,11 @@ class AbstractSection:
 
                 try:
                     if j == 1 and float(value) > 0.5:
-                        add_arrow(table_cell(i, j), '', RGBColor(0xFF,0x00,0x00))
+                        self.add_arrow(table.cell(i, j), '', RGBColor(0xFF,0x00,0x00))
                     elif j == 2 and float(value) > 0.25:
-                        add_arrow(table_cell(i, j), '', RGBColor(0xFF,0x00,0x00))
+                        self.add_arrow(table.cell(i, j), '', RGBColor(0xFF,0x00,0x00))
                     elif j == 3 and float(value) > 0.10:
-                        add_arrow(table_cell(i, j), '', RGBColor(0xFF,0x00,0x00))
+                        self.add_arrow(table.cell(i, j), '', RGBColor(0xFF,0x00,0x00))
                     else:
                         continue
                 except:
@@ -131,7 +131,7 @@ class AbstractSection:
             "口径2: P(字段缺失率80%) = 缺失率不低于80%字段数/下车字段数",
             "口径3: P(字段缺失率99.9%) = 缺失率不低于99.9%字段数/下车字段数"
         ]
-        add_remark_row(table, remarks, remark_label = "备注*")
+        self.add_remark_row(table, remarks, remark_label = "备注*")
 
 
     def add_arrow(self, cell, arrow_char, color):
