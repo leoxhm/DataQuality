@@ -26,16 +26,14 @@ class BaseMetric:
 
     def run(self, ctx):
         try:
-            result = self.calculate(ctx)
-            ctx.metric[self.name] = result
+            self.calculate(ctx)
             if self.log:
                 self.log.info(f"{self.name} success")
 
         except Exception as e:
             if self.log:
-                self.log.error(
+                self.log.error("Metric Computation",
                     f"{self.name} 计算失败: {str(e)}",
-                    exc_info=True
                 )
             ctx.metric[self.name] = 0
 
@@ -75,13 +73,13 @@ class MetricScheduler:
                     missing_dep = [
                         dep
                         for dep in metric_cls.depend
-                        if dep not in ctx.metric
+                        if dep not in ctx.metric and dep not in ctx.cache
                     ]
 
                     if missing_dep:
 
                         if self.log:
-                            self.log.error(
+                            self.log.error("Missing dependencies",
                                 f"{metric_cls.name} 缺少依赖: {missing_dep}"
                             )
 

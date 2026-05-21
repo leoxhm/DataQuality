@@ -146,19 +146,6 @@ class SampleNumTop5(BaseMetric):
     category = "sample"
 
     def calculate(self, ctx):
-
-        sample_partition_df = pd.merge(
-            ctx.data["sample"][
-                ["backtrack_dt", "sample_count", "bucket_0_cnt"]
-            ],
-            ctx.data["prod"],
-            how="left",
-            on="backtrack_dt"
-        )
-
-        sample_partition_df["sample_match_card_count"] = (sample_partition_df["sample_count"] - sample_partition_df["bucket_0_cnt"])
-        sample_partition_df["sample_match_prod_count"] = (sample_partition_df["non_empty_count"] / sample_partition_df["sample_count"])
-        ctx.cache["样本分区"] = sample_partition_df
         top5_df = ctx.cache["样本分区"][
             [
                 "backtrack_dt",
@@ -167,7 +154,7 @@ class SampleNumTop5(BaseMetric):
                 "non_empty_count",
                 "sample_match_prod_rate"
             ]
-        ].sort_values("sample_count", ascending=False).head(5)
+        ].sort_values("sample_count", ascending=True).head(5)
 
         return top5_df
 

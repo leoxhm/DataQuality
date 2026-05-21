@@ -18,12 +18,16 @@ class SamplePartitionIndex(BaseMetric):
 
         sample_partition_df["sample_match_card_count"] = (
                     sample_partition_df["sample_count"] - sample_partition_df["bucket_0_cnt"]) #样本人卡查得数
+
         sample_partition_df["sample_match_card_rate"] = (
                     sample_partition_df["sample_match_card_count"] / sample_partition_df["sample_count"]) #人卡查得率
+
         sample_partition_df["sample_match_prod_rate"] = (
                     sample_partition_df["non_empty_count"] / sample_partition_df["sample_count"]) #产品查得率
+
         sample_partition_df["card_prod_loss_rate"] = (
                 sample_partition_df["sample_match_card_rate"] - sample_partition_df["sample_match_prod_rate"])  #人卡查得至产品查得损失
+
         ctx.cache[self.name] = sample_partition_df
 
 @register_metric(priority=2, depend=["样本分区"])

@@ -1,13 +1,8 @@
 from config import Config
 from context import QCContext
 from dataset import QCDataset
-
-# 触发 metric 注册
-import metrics
-
 from metrics.base import MetricScheduler
 from logger import TaskLogger
-
 
 def main():
 

@@ -16,6 +16,7 @@ class LossRateMetric(BaseMetric):
 
     def calculate(self, ctx):
         ctx.data["fields"]["loss_rate"] = ctx.data["fields"]["non_null_count"] / ctx.metric["样本量"]
+        ctx.metric[self.name] = ctx.data["fields"]["loss_rate"]
 
 @register_metric(priority=3, depend=["字段缺失率", "样本量"])
 class LossRateOver50Proportion(BaseMetric):
